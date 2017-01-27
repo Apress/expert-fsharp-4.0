@@ -1,0 +1,52 @@
+﻿%{
+open System
+open Symbolic.Expressions
+%}
+
+%token <int> INT
+%token <float> FLOAT
+%token <string> ID
+
+%token EOF LPAREN RPAREN PLUS MINUS TIMES DIV HAT SIN COS E
+
+%left ID
+%left prec_negate
+%left LPAREN
+%left PLUS MINUS
+%left TIMES DIV
+%left HAT
+
+
+%start expr
+%type <Expr> expr
+%%
+
+expr:
+    | exp EOF { $1 }
+
+number:
+    | INT                           { Convert.ToDecimal($1) }
+    | FLOAT                         { Convert.ToDecimal($1) }
+    | MINUS INT %prec prec_negate   { Convert.ToDecimal(-$2) }
+    | MINUS FLOAT %prec prec_negate { Convert.ToDecimal(-$2) }
+
+
+exp:
+    | number                  { Num $1 }
+    | ID                      { Var $1 }
+    | exp PLUS exp            { Add [$1; $3] }
+    | exp MINUS exp           { Sub ($1, [$3]) }
+    | exp TIMES exp           { Prod ($1, $3) }
+    | exp DIV exp             { Frac ($1, $3) }
+    | SIN LPAREN exp RPAREN   { Sin $3 }
+    | COS LPAREN exp RPAREN   { Cos $3 }
+    | E HAT exp               { Exp $3 }
+    | term                    { $1 }
+    | exp HAT number          { Pow ($1, $3) }
+    | LPAREN exp RPAREN       { $2 }
+    | MINUS LPAREN exp RPAREN { Neg $3 }
+
+term:
+    | number ID               { Prod (Num $1, Var $2) }
+    | number ID HAT number    { Prod (Num $1, Pow (Var $2, $4)) }
+    | ID HAT number           { Prod (Num 1M, Pow (Var $1, $3)) }

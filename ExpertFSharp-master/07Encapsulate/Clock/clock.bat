@@ -1,0 +1,1 @@
+fsc --sig:clock.fsi -a clock.fs

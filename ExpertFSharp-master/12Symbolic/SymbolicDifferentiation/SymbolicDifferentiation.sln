@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{A67D8B6F-38D2-4C9D-B8C0-D37EC9E7DEF9}"
+	ProjectSection(SolutionItems) = preProject
+		..\paket.dependencies = ..\paket.dependencies
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D96CDCA4-44C9-49D3-AEB1-803FD61C39A4}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SymbolicDifferentiation", "SymbolicDifferentiation.fsproj", "{3A947D87-D3A6-4C68-A11E-3B0FBF32381F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A947D87-D3A6-4C68-A11E-3B0FBF32381F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A947D87-D3A6-4C68-A11E-3B0FBF32381F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A947D87-D3A6-4C68-A11E-3B0FBF32381F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A947D87-D3A6-4C68-A11E-3B0FBF32381F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

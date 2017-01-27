@@ -1,0 +1,23 @@
+syntax: glob
+*.dll
+*.exe
+*.suo
+*.pdb
+*.cache
+*.XML
+*.xml
+*.FileListAbsolute.txt
+*/packages/*
+*.snk
+*/Debug/*
+*.vcxproj.filters
+*.sdf
+*.user
+*/ipch/*
+*.opensdf
+*/build.tmp
+*/Website.dll.*.js
+14Web/AspNet-Web/Scripts/Website.dll.js
+*/AspNet-Website.dll.js
+*/AspNet-Website.dll.min.js
+*/bin/*

@@ -1,0 +1,5 @@
+framework: net46
+source https://www.nuget.org/api/v2/
+
+nuget NUnit
+nuget FsCheck

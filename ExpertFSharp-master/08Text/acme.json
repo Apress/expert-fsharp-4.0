@@ -1,0 +1,6 @@
+ { "customers" : 
+      [ { "name" : "ACME",
+          "orders" : 
+             [ { "number" : "A012345", 
+                 "item" : "widget", 
+                 "quantity" : 1 } ] } ] }

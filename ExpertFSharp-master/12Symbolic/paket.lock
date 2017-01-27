@@ -1,0 +1,21 @@
+FRAMEWORK: >= NET40
+NUGET
+  remote: https://nuget.org/api/v2
+  specs:
+    FSharp.Core (4.0.0.1)
+    FsLexYacc (6.1.0)
+      FsLexYacc.Runtime (>= 6.1.0)
+    FsLexYacc.Runtime (6.1.0)
+    FSPowerPack.Community (3.0.0)
+      FSPowerPack.Linq.Community
+      FSPowerPack.Metadata.Community
+      FSPowerPack.Parallel.Seq.Community
+    FSPowerPack.Core.Community (3.0.0)
+    FSPowerPack.Linq.Community (3.0.0)
+      FSPowerPack.Core.Community
+    FSPowerPack.Metadata.Community (3.0.0)
+      FSPowerPack.Core.Community
+    FSPowerPack.Parallel.Seq.Community (3.0.0)
+      FSPowerPack.Core.Community
+    Suave (0.33.0)
+      FSharp.Core (>= 3.1.2.5)

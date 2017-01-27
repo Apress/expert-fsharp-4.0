@@ -1,0 +1,1 @@
+Before building the solution, install packages with paket install. I've included a build.bat file that does this and then builds the solution with the type provider.

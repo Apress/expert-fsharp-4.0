@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "20Libraries", "20Libraries\20Libraries.fsproj", "{F23E34ED-C8E5-4908-9C28-6543F5EDD07B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C_", "C_\C_.csproj", "{E20A764A-53D5-4701-A525-781B42188B14}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E20A764A-53D5-4701-A525-781B42188B14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E20A764A-53D5-4701-A525-781B42188B14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E20A764A-53D5-4701-A525-781B42188B14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E20A764A-53D5-4701-A525-781B42188B14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F23E34ED-C8E5-4908-9C28-6543F5EDD07B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F23E34ED-C8E5-4908-9C28-6543F5EDD07B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F23E34ED-C8E5-4908-9C28-6543F5EDD07B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F23E34ED-C8E5-4908-9C28-6543F5EDD07B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

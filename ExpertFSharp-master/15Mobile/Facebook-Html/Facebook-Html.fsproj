@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
+    <Platform Condition="'$(Platform)' == ''">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{cbc0e600-1fe2-4ceb-8420-1c43d29714c5}</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <Tailcalls>false</Tailcalls>
+    <OutputPath>bin/Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <Tailcalls>true</Tailcalls>
+    <OutputPath>bin/Release</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup>
+    <WebSharperSiteletsOfflineDirectory>$(MSBuildProjectDirectory)\bin\html</WebSharperSiteletsOfflineDirectory>
+    <OutputType>Library</OutputType>
+    <Name>Facebook_Html</Name>
+    <RootNamespace>$(Name)</RootNamespace>
+    <AssemblyName>$(Name)</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <WarningLevel>3</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="extra.files" />
+    <Compile Include="Main.fs" />
+    <Content Include="Main.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="IntelliFactory.WebSharper.JQuery.Mobile">
+      <HintPath>..\..\..\..\..\Program Files (x86)\IntelliFactory\WebSharper\Extensions\WebSharper Extensions for jQuery Mobile\IntelliFactory.WebSharper.JQuery.Mobile.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="FSharp.Core" />
+    <Reference Include="System" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Facebook\Facebook-Extension.fsproj">
+      <Name>Facebook-Extension</Name>
+      <Project>{2263eb9e-a56b-4ac0-a48e-68852069af37}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="WebSharper.targets" Condition="Exists('WebSharper.targets')" />
+  <Import Project="$(WEBSHARPER_HOME)/IntelliFactory.WebSharper.Sitelets.targets" />
+</Project>

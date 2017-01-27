@@ -1,0 +1,38 @@
+﻿{
+module Symbolic.Expressions.ExprLexer
+
+open System
+open Symbolic.Expressions
+open Symbolic.Expressions.ExprParser
+open Microsoft.FSharp.Text.Lexing
+
+let lexeme = LexBuffer<_>.LexemeString
+
+let special lexbuf = function
+    | "+" -> PLUS    | "-" -> MINUS
+    | "*" -> TIMES   | "/" -> DIV
+    | "(" -> LPAREN  | ")" -> RPAREN  | "^" -> HAT
+    | _   -> failwith "Invalid operator"
+
+let id lexbuf = function
+    | "sin" -> SIN   | "cos" -> COS
+    | "e"   -> E     | id    -> ID id
+}
+
+let digit     = ['0'-'9']
+let int       = digit+
+let float     = int ('.' int)? (['e' 'E'] int)?
+let alpha     = ['a'-'z' 'A'-'Z']
+let id        = alpha+ (alpha | digit | ['_' '$'])*
+let ws        = ' ' | '\t'
+let nl        = '\n' | '\r' '\n'
+let special   = '+' | '-' | '*' | '/' | '(' | ')' | '^'
+
+rule main = parse
+    | int        { INT     (Convert.ToInt32(lexeme lexbuf)) }
+    | float      { FLOAT   (Convert.ToDouble(lexeme lexbuf)) }
+    | id         { id      lexbuf (lexeme lexbuf) }
+    | special    { special lexbuf (lexeme lexbuf) }
+    | ws | nl    { main    lexbuf }
+    | eof        { EOF }
+    | _          { failwith (lexeme lexbuf) }
