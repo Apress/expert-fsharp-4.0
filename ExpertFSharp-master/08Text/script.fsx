@@ -442,7 +442,7 @@ let firstAndSecondWord (inp : string) =
 open FSharp.Text.RegexProvider
 
 type PhoneRegex = Regex< @"(?<AreaCode>^\d{3})-(?<PhoneNumber>\d{3}-\d{4}$)">
-let results = PhoneRegex().Match("425-123-2345")
+let results = PhoneRegex().TypedMatch("425-123-2345")
 let areaCode = results.AreaCode.Value
 //type PhoneRegex = Regex<...>
 //val results : Regex<...>.MatchType2 = 425-123-2345
