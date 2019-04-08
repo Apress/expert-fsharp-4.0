@@ -990,6 +990,9 @@ let parse input =
 //  | Const of int
 //type Polynomial = Term list
 //type TokenStream = Token list
+//val negate : term:Term -> Term
+//val negateFst : Term * 'a -> Term * 'a
+//val negateHead : list:Term list -> Term list
 //val tryToken : src:TokenStream -> (Token * Token list) option
 //val parseIndex : src:TokenStream -> int * Token list
 //val parseTerm : src:TokenStream -> Term * Token list
@@ -999,8 +1002,11 @@ let parse input =
 parse "1+3"
 //val it : Term list = [Const 1; Const 3]
 
-parse "-6-x^2-3y-6"
+parse "2x^2+3x+5"
 //val it : Term list = [Term (2,"x",2); Term (3,"x",1); Const 5]
+
+parse "3x^2-2x-1"
+//val it : Term list = [Term (3,"x",2); Term (-2,"x",1); Const -1]
 
 type OutState = System.IO.BinaryWriter
 type InState = System.IO.BinaryReader
