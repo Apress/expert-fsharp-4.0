@@ -924,6 +924,21 @@ type Term =
 type Polynomial = Term list
 type TokenStream = Token list
 
+let negate term =
+  match term with
+  | Term (a, b, c) ->
+    Term (-a, b, c)
+  | Const a ->
+    Const -a
+
+let negateFst tuple = 
+  fst tuple |> negate, snd tuple
+
+let negateHead list =
+  match list with
+  | [] -> []
+  | h::t -> negate h::t 
+
 let tryToken (src : TokenStream) =
     match src with
     | tok :: rest -> Some(tok, rest)
@@ -938,8 +953,10 @@ let parseIndex src =
         | _ -> failwith "expected an integer after '^'"
     | _ -> 1, src
 
-let parseTerm src =
+let rec parseTerm src =
     match tryToken src with
+    | Some (MINUS, src) ->
+      parseTerm src |> negateFst
     | Some (INT num, src) ->
         match tryToken src with
         | Some (ID id, src) ->
@@ -957,6 +974,9 @@ let rec parsePolynomial src =
     | Some (PLUS, src) ->
         let p2, src = parsePolynomial src
         (t1 :: p2), src
+    | Some (MINUS, src) ->
+        let p2, src = parsePolynomial src      
+        (t1 :: negateHead p2), src
     | _ -> [t1], src
 
 let parse input =
@@ -970,6 +990,9 @@ let parse input =
 //  | Const of int
 //type Polynomial = Term list
 //type TokenStream = Token list
+//val negate : term:Term -> Term
+//val negateFst : Term * 'a -> Term * 'a
+//val negateHead : list:Term list -> Term list
 //val tryToken : src:TokenStream -> (Token * Token list) option
 //val parseIndex : src:TokenStream -> int * Token list
 //val parseTerm : src:TokenStream -> Term * Token list
@@ -981,6 +1004,9 @@ parse "1+3"
 
 parse "2x^2+3x+5"
 //val it : Term list = [Term (2,"x",2); Term (3,"x",1); Const 5]
+
+parse "3x^2-2x-1"
+//val it : Term list = [Term (3,"x",2); Term (-2,"x",1); Const -1]
 
 type OutState = System.IO.BinaryWriter
 type InState = System.IO.BinaryReader
